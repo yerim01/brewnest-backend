@@ -11,6 +11,21 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+
+import environ
+
+env = environ.Env(
+    MEDIA_URL=(str, '/media/')
+)
+
+root = environ.Path(__file__) - 2  # 2 level above
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+MEDIA_ROOT = root('media')
+MEDIA_URL = env('MEDIA_URL')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,8 +52,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "store",
     "rest_framework",
+    "store",
 ]
 
 MIDDLEWARE = [

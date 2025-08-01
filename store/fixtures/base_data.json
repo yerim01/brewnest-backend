@@ -1,0 +1,58 @@
+[
+  {
+    "model": "store.category",
+    "pk": 1,
+    "fields": { "name": "Espresso" }
+  },
+  {
+    "model": "store.category",
+    "pk": 2,
+    "fields": { "name": "Decaf" }
+  },
+  {
+    "model": "store.category",
+    "pk": 3,
+    "fields": { "name": "Matcha" }
+  },
+  { "model": "store.origin", "pk": 1, "fields": { "name": "Ethiopia" } },
+  { "model": "store.origin", "pk": 2, "fields": { "name": "Guatemala" } },
+  { "model": "store.origin", "pk": 3, "fields": { "name": "Brazil" } },
+  { "model": "store.origin", "pk": 4, "fields": { "name": "Colombia" } },
+  { "model": "store.origin", "pk": 5, "fields": { "name": "Kenya" } },
+  { "model": "store.origin", "pk": 6, "fields": { "name": "Japan" } },
+  {
+    "model": "store.roastlevel",
+    "pk": 1,
+    "fields": { "level": "Light" }
+  },
+  {
+    "model": "store.roastlevel",
+    "pk": 2,
+    "fields": { "level": "Medium" }
+  },
+  {
+    "model": "store.roastlevel",
+    "pk": 3,
+    "fields": { "level": "Dark" }
+  },
+  {
+    "model": "store.tastingnote",
+    "pk": 1,
+    "fields": { "tasting_note": "Chocolatey" }
+  },
+  {
+    "model": "store.tastingnote",
+    "pk": 2,
+    "fields": { "tasting_note": "Floral" }
+  },
+  {
+    "model": "store.tastingnote",
+    "pk": 3,
+    "fields": { "tasting_note": "Fruity" }
+  },
+  {
+    "model": "store.tastingnote",
+    "pk": 4,
+    "fields": { "tasting_note": "Nutty" }
+  }
+]

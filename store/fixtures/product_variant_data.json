@@ -1,0 +1,222 @@
+[
+  {
+    "model": "store.productvariant",
+    "pk": 1,
+    "fields": {
+      "product": 1,
+      "weight_grams": 200,
+      "price": "17.00",
+      "discount_price": null,
+      "stock": 20
+    }
+  },
+  {
+    "model": "store.productvariant",
+    "pk": 2,
+    "fields": {
+      "product": 1,
+      "weight_grams": 250,
+      "price": "18.50",
+      "discount_price": "16.00",
+      "stock": 15
+    }
+  },
+  {
+    "model": "store.productvariant",
+    "pk": 3,
+    "fields": {
+      "product": 2,
+      "weight_grams": 250,
+      "price": "19.00",
+      "discount_price": null,
+      "stock": 18
+    }
+  },
+  {
+    "model": "store.productvariant",
+    "pk": 4,
+    "fields": {
+      "product": 2,
+      "weight_grams": 300,
+      "price": "20.00",
+      "discount_price": "18.00",
+      "stock": 10
+    }
+  },
+  {
+    "model": "store.productvariant",
+    "pk": 5,
+    "fields": {
+      "product": 3,
+      "weight_grams": 200,
+      "price": "16.00",
+      "discount_price": null,
+      "stock": 25
+    }
+  },
+  {
+    "model": "store.productvariant",
+    "pk": 6,
+    "fields": {
+      "product": 3,
+      "weight_grams": 300,
+      "price": "21.00",
+      "discount_price": "19.00",
+      "stock": 12
+    }
+  },
+  {
+    "model": "store.productvariant",
+    "pk": 7,
+    "fields": {
+      "product": 4,
+      "weight_grams": 250,
+      "price": "18.00",
+      "discount_price": null,
+      "stock": 30
+    }
+  },
+  {
+    "model": "store.productvariant",
+    "pk": 8,
+    "fields": {
+      "product": 4,
+      "weight_grams": 300,
+      "price": "22.00",
+      "discount_price": "20.00",
+      "stock": 14
+    }
+  },
+  {
+    "model": "store.productvariant",
+    "pk": 9,
+    "fields": {
+      "product": 5,
+      "weight_grams": 200,
+      "price": "15.50",
+      "discount_price": "14.00",
+      "stock": 20
+    }
+  },
+  {
+    "model": "store.productvariant",
+    "pk": 10,
+    "fields": {
+      "product": 5,
+      "weight_grams": 250,
+      "price": "17.00",
+      "discount_price": null,
+      "stock": 18
+    }
+  },
+  {
+    "model": "store.productvariant",
+    "pk": 11,
+    "fields": {
+      "product": 6,
+      "weight_grams": 30,
+      "price": "10.00",
+      "discount_price": null,
+      "stock": 50
+    }
+  },
+  {
+    "model": "store.productvariant",
+    "pk": 12,
+    "fields": {
+      "product": 6,
+      "weight_grams": 50,
+      "price": "12.00",
+      "discount_price": "11.00",
+      "stock": 30
+    }
+  },
+  {
+    "model": "store.productvariant",
+    "pk": 13,
+    "fields": {
+      "product": 7,
+      "weight_grams": 30,
+      "price": "9.00",
+      "discount_price": null,
+      "stock": 40
+    }
+  },
+  {
+    "model": "store.productvariant",
+    "pk": 14,
+    "fields": {
+      "product": 7,
+      "weight_grams": 50,
+      "price": "13.00",
+      "discount_price": "12.00",
+      "stock": 28
+    }
+  },
+  {
+    "model": "store.productvariant",
+    "pk": 15,
+    "fields": {
+      "product": 8,
+      "weight_grams": 30,
+      "price": "10.00",
+      "discount_price": "9.00",
+      "stock": 35
+    }
+  },
+  {
+    "model": "store.productvariant",
+    "pk": 16,
+    "fields": {
+      "product": 8,
+      "weight_grams": 50,
+      "price": "14.00",
+      "discount_price": null,
+      "stock": 20
+    }
+  },
+  {
+    "model": "store.productvariant",
+    "pk": 17,
+    "fields": {
+      "product": 9,
+      "weight_grams": 30,
+      "price": "11.00",
+      "discount_price": "10.00",
+      "stock": 22
+    }
+  },
+  {
+    "model": "store.productvariant",
+    "pk": 18,
+    "fields": {
+      "product": 9,
+      "weight_grams": 50,
+      "price": "13.00",
+      "discount_price": null,
+      "stock": 25
+    }
+  },
+  {
+    "model": "store.productvariant",
+    "pk": 19,
+    "fields": {
+      "product": 10,
+      "weight_grams": 30,
+      "price": "10.50",
+      "discount_price": null,
+      "stock": 30
+    }
+  },
+  {
+    "model": "store.productvariant",
+    "pk": 20,
+    "fields": {
+      "product": 10,
+      "weight_grams": 50,
+      "price": "12.50",
+      "discount_price": "11.00",
+      "stock": 18
+    }
+  }
+]
