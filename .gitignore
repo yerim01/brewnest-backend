@@ -2,18 +2,29 @@
 __pycache__/
 *.py[cod]
 *.sqlite3
-
-# Django
 *.log
 *.pot
 *.pyc
-db.sqlite3
-.env
+*.pyo
 
-# VSCode / IDE
+# Virtual environment
+env/
+venv/
+ENV/
+.venv/
+
+# Django static/media
+/static/
+/media/
+
+# IDE/editor settings
 .vscode/
 .idea/
+*.swp
 
-# Migrations (optional)
-**/migrations/
-!**/migrations/__init__.py
+# Environment variables
+.env
+.env.*
+
+# MacOS
+.DS_Store
