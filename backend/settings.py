@@ -14,12 +14,14 @@ from dotenv import load_dotenv
 from pathlib import Path
 import os
 
+from datetime import timedelta
+
 import environ
 
-load_dotenv('.env.local')
+load_dotenv(".env.local")
 
 env = environ.Env(
-    MEDIA_URL=(str, '/media/')
+    MEDIA_URL=(str, "/media/")
 )
 
 root = environ.Path(__file__) - 2  # 2 level above
@@ -27,8 +29,8 @@ root = environ.Path(__file__) - 2  # 2 level above
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-MEDIA_ROOT = root('media')
-MEDIA_URL = env('MEDIA_URL')
+MEDIA_ROOT = root("media")
+MEDIA_URL = env("MEDIA_URL")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -51,6 +53,8 @@ CSRF_TRUSTED_ORIGINS = os.getenv("DJANGO_CSRF_TRUSTED_ORIGINS", "https://127.0.0
 
 # Application definition
 
+SITE_ID = 1
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -58,18 +62,31 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "rest_framework",
+
+    # apps
     "store",
+    "accounts",
+
+    # third party
+    'corsheaders',
+    "rest_framework",
+    "rest_framework.authtoken",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "backend.urls"
@@ -97,19 +114,15 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    # "default": {
-    #     "ENGINE": "django.db.backends.sqlite3",
-    #     "NAME": BASE_DIR / "db.sqlite3",
-    # }
-    'default': {
-         'ENGINE': 'django.db.backends.{}'.format(
-             os.getenv('DATABASE_ENGINE', 'sqlite3')
+    "default": {
+         "ENGINE": "django.db.backends.{}".format(
+             os.getenv("DATABASE_ENGINE", "sqlite3")
          ),
-         'NAME': os.getenv('DATABASE_NAME', 'brewnest'),
-         'USER': os.getenv('DATABASE_USERNAME', 'username'),
-         'PASSWORD': os.getenv('DATABASE_PASSWORD', 'password'),
-         'HOST': os.getenv('DATABASE_HOST', '127.0.0.1'),
-         'PORT': os.getenv('DATABASE_PORT', 5432),
+         "NAME": os.getenv("DATABASE_NAME", "brewnest"),
+         "USER": os.getenv("DATABASE_USERNAME", "username"),
+         "PASSWORD": os.getenv("DATABASE_PASSWORD", "password"),
+         "HOST": os.getenv("DATABASE_HOST", "127.0.0.1"),
+         "PORT": os.getenv("DATABASE_PORT", 5432),
      }
 }
 
@@ -132,6 +145,28 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ]
+}
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=3),
+}
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOWS_CREDENTIALS = True
+
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -156,6 +191,22 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
+LOGIN_REDIRECT_URL = "/callback/"
+
+SOCIALACCOUNT_PROVIDERS = {
+    "google": {
+        "SCOPE": [
+            "email",
+            "profile"
+        ],
+        "AUTH_PARAMS": {"access_type": "online"},
+        "OAUTH_PKCE_ENABLED": True,
+        "FETCH_USERINFO": True,
+    }
+}
+
+SOCIALACCOUNT_STORE_TOKENS = True
+
+# INTERNAL_IPS = [
+#     "127.0.0.1",
+# ]
