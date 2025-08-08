@@ -37,18 +37,19 @@ def google_login_callback(request):
 
     if not social_account:
         print("No social account for user:", user)
-        return redirect('http://localhost:5173/login/callback/?error=NoSocialAccount')
+        return redirect('http://localhost:3000/login/callback/?error=NoSocialAccount')
     
-    token = SocialToken.objects.filter(account=social_account, account_provider='google').first()
+    # token = SocialToken.objects.filter(account=social_account, account_provider='google').first()
+    token = SocialToken.objects.get(account__provider='google', account__user=request.user)
 
     if token:
         print("Google token found:", token.token)
         refresh = RefreshToken.for_user(user)
         access_token = str(refresh.access_token)
-        return redirect(f'http://localhost:5173/login/callback/?access_token={access_token}')
+        return redirect(f'http://localhost:3000/login/callback/?access_token={access_token}')
     else:
         print("No Google token found for user", user)
-        return redirect(f'http://localhost:5173/login/callback/?error=NoGoogleToken')
+        return redirect(f'http://localhost:3000/login/callback/?error=NoGoogleToken')
     
 @csrf_exempt
 def validate_google_token(request):

@@ -53,7 +53,7 @@ CSRF_TRUSTED_ORIGINS = os.getenv("DJANGO_CSRF_TRUSTED_ORIGINS", "https://127.0.0
 
 # Application definition
 
-SITE_ID = 1
+SITE_ID = 3
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -66,6 +66,8 @@ INSTALLED_APPS = [
     # apps
     "store",
     "accounts",
+
+    "django.contrib.sites",
 
     # third party
     'corsheaders',
@@ -206,6 +208,8 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 SOCIALACCOUNT_STORE_TOKENS = True
+
+ACCOUNT_USERNAME_REQUIRED = False
 
 # INTERNAL_IPS = [
 #     "127.0.0.1",

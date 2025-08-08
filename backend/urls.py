@@ -25,13 +25,13 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("store/", include("store.urls")),
     path("accounts/user/register/", UserCreate.as_view(), name="user_create"),
-    path("accounts/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("accounts/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"), # regular login
     path("accounts/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
-    path("accounts-auth/", include("rest_framework.urls")),
-    path("user-auth/", include("allauth.urls")), # google login path
+    path("accounts-auth/", include("rest_framework.urls")), # django login
+    path("google-auth/", include("allauth.urls")), # google login path
     path("callback/", google_login_callback, name="callback"), # google login redirect URL
     path("accounts/auth/user/", UserDetailView.as_view(), name="user_detail"),
-    path("accounts/google/validate_token", validate_google_token, name="validate_token"),
+    path("accounts/google/validate_token/", validate_google_token, name="validate_token"),
 ]
 
 if settings.DEBUG:
