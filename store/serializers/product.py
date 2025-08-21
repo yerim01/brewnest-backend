@@ -4,7 +4,7 @@ from store.models.product import Category, Origin, RoastLevel, TastingNote, Prod
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['id', 'name']
+        fields = ['id', 'name', 'slug', 'group_slug']
 
 class OriginSerializer(serializers.ModelSerializer):
     class Meta:
@@ -36,6 +36,6 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = [
-            'id', 'name', 'category', 'origin', 'roast_level', 'tasting_note',
-            'description', 'image', 'is_active', 'created_at', 'variants'
+            'id', 'name', 'slug', 'category', 'origin', 'roast_level', 'tasting_note',
+            'description', 'image', 'is_active', 'variants'
         ]

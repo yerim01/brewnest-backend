@@ -2,17 +2,17 @@
   {
     "model": "store.category",
     "pk": 1,
-    "fields": { "name": "Espresso" }
+    "fields": { "name": "Espresso", "slug": "espresso", "group_slug": "coffee" }
   },
   {
     "model": "store.category",
     "pk": 2,
-    "fields": { "name": "Decaf" }
+    "fields": { "name": "Decaf", "slug": "decaf", "group_slug": "coffee" }
   },
   {
     "model": "store.category",
     "pk": 3,
-    "fields": { "name": "Matcha" }
+    "fields": { "name": "Matcha", "slug": "matcha", "group_slug": "matcha" }
   },
   { "model": "store.origin", "pk": 1, "fields": { "name": "Ethiopia" } },
   { "model": "store.origin", "pk": 2, "fields": { "name": "Guatemala" } },

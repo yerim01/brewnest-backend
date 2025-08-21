@@ -53,7 +53,7 @@ CSRF_TRUSTED_ORIGINS = os.getenv("DJANGO_CSRF_TRUSTED_ORIGINS", "https://127.0.0
 
 # Application definition
 
-SITE_ID = 3
+SITE_ID = 4
 
 INSTALLED_APPS = [
     "django.contrib.admin",

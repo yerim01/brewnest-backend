@@ -3,9 +3,16 @@ from django.utils.text import slugify
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
+    slug = models.CharField(unique=True, blank=True)
+    group_slug = models.SlugField(blank=True, null=True)
 
     def __str__(self):
         return self.name
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
     
 class Origin(models.Model):
     name = models.CharField(max_length=100, unique=True)
