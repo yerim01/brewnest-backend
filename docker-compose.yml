@@ -14,6 +14,8 @@ services:
       # - ./static:/app/staticfiles
       - ./static:/app/static
       - ./media:/app/media
+      # - static_volume:/app/staticfiles
+      # - media_volume:app/
     restart: always
 
   frontend-proxy:
