@@ -19,7 +19,9 @@ python manage.py migrate --noinput
 
 # Load fixtures
 echo "Loading fixtures..."
-python manage.py loaddata store/fixtures/*.json
+if [ "${LOAD_FIXTURES:-false}" = "true" ]; then
+    python manage.py loaddata store/fixtures/*.json
+fi
 
 # Collect static files
 echo "Collecting static files..."
@@ -28,9 +30,23 @@ python manage.py collectstatic --noinput
 
 
 # Create superuser if credentials provided
-if [ -n "${DJANGO_SUPERUSER_USERNAME:-}" ] && [ -n "${DJANGO_SUPERUSER_EMAIL:-}" ] && [ -n "${DJANGO_SUPERUSER_PASSWORD:-}" ]; then
+if [ -n "${DJANGO_SUPERUSER_USERNAME:-}" ] && \
+   [ -n "${DJANGO_SUPERUSER_EMAIL:-}" ] && \
+   [ -n "${DJANGO_SUPERUSER_PASSWORD:-}" ]; then
     echo "Creating superuser if not exists..."
-    python manage.py createsuperuser --noinput || echo "Superuser already exists"
+    python manage.py shell <<EOF
+from django.contrib.auth import get_user_model
+User = get_user_model()
+if not User.objects.filter(username="${DJANGO_SUPERUSER_USERNAME}").exists():
+    User.objects.create_superuser(
+        "${DJANGO_SUPERUSER_USERNAME}",
+        "${DJANGO_SUPERUSER_EMAIL}",
+        "${DJANGO_SUPERUSER_PASSWORD}"
+    )
+    print("Superuser created")
+else:
+    print("Superuser already exists")
+EOF
 fi
 
 # Start Gunicorn

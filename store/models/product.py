@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 
+
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.CharField(unique=True, blank=True)
@@ -42,7 +43,7 @@ class Product(models.Model):
     tasting_note = models.ForeignKey(TastingNote, on_delete=models.SET_NULL, null=True, blank=True)
 
     description = models.TextField()
-    image = models.ImageField(upload_to='product_images/', null=True, blank=True)
+    image = models.ImageField(upload_to='product-images/', null=True, blank=True)
 
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
