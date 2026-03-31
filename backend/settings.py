@@ -191,6 +191,8 @@ CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ALLOWED_ORIGINS = [
         "http://localhost:3000",
+        "https://brewnest.dev",
+        "https://www.brewnest.dev",
 ]
 
 CORS_ALLOWS_CREDENTIALS = True
